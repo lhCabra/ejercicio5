@@ -22,11 +22,18 @@ export const TodoApp = () => {
       payload: newTodo,
     });
   };
-  const handleDeleteItem = (item) => {
+  const handleDelete = (item) => {
     dispatch({
-      type: 'remove',
+      type: 'DELETE',
       payload: item,
     });
+  };
+  const handleToggle = (crossItem) => {
+    dispatch({
+      type: 'TOGGLE',
+      payload: crossItem.id,
+    });
+    console.log("Llega a app")
   };
 
   return (
@@ -36,7 +43,7 @@ export const TodoApp = () => {
 
       <div className='row'>
         <div className='col-7'>
-          <TodoList todos={todos} handleDeleteItem={handleDeleteItem}/>
+          <TodoList todos={todos} handleDeleteItem={handleDelete} handleCrossItem={handleToggle}/>
         </div>
 
         <div className='col-5'>
